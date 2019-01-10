@@ -4,9 +4,10 @@ a, i {
 
 a {
 	text-decoration: none;
+	color: darken($light-blue, 10%);
 		
 	&:hover {
-		color: darken($light-blue, 20%);
+		color: darken($light-blue, 25%);
 	}
 }
 
@@ -94,7 +95,7 @@ blockquote {
 	padding: 0 15px;
 }
 
-section {
+.section {
 	padding: 25px 0;
 	position: relative;
 
@@ -181,7 +182,6 @@ section {
 	border: 2px solid;
 	border-color: $dark-gray;
 	line-height: 1.3;
-	font-size: 14px;
 	color: $dark-gray;
 	padding: 11px 10px;
 	text-transform: uppercase;
@@ -200,7 +200,7 @@ section {
 		background-color: $light-blue;
 
 		@include media ('>=tablet') {
-			min-width: 370px;
+			padding: 21px 10px;
 		}
 
 		&:hover {
@@ -282,6 +282,7 @@ section {
 
 	.img-block {
 		margin-bottom: 5px;
+		min-height: 48px;
 
 		@include media ('>=desktop') {
 			margin-bottom: 11px;
@@ -377,7 +378,7 @@ section {
 			text-align: center;	
 		}
 
-		@include media ('>=desktop') {
+		@include media ('>=widescreen') {
 			margin-right: -20px;
 		}
 
@@ -425,7 +426,6 @@ section {
 		}
 
 		.col {
-			position: relative;
 			overflow: hidden;
 			width: calc(50% - 10px);
 			margin: 0 5px 20px;
@@ -439,47 +439,53 @@ section {
 				margin: 0 15px 30px;
 			}
 
-			&:hover {
-				&:before, &:after {
-					visibility: visible;
-					opacity: 1;
-				}
-			}
 
-			&:before {
-				@include animate(opacity visibility);
-				@include vhalign;
-
-				content: '+';
-				position: absolute;
-				font-size: 40px;
-				font-weight: 300;
-				opacity: 0;
-				visibility: hidden;
-				z-index: 3;
-
-				@include media ('>=desktop') {
-					font-size: 75px;
-				}
-			}
-
-			&:after {
-				@include animate(opacity visibility);
-
-				content: '';
-				position: absolute;
-				background-color: rgba($dark-gray, .9);
-				top: 0;
-				bottom: 0;
-				right: 0;
-				left: 0;
-				z-index: 2;
-				opacity: 0;
-				visibility: hidden;
-			}
 
 			a {
 				display: block;
+				position: relative;
+				color: $white;
+				
+				&:hover {
+					&:before, &:after {
+						visibility: visible;
+						opacity: 1;
+					}
+				}
+
+				&:before {
+					@include animate(opacity visibility);
+					
+					top: 47%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					content: '+';
+					position: absolute;
+					font-size: 40px;
+					font-weight: 300;
+					opacity: 0;
+					visibility: hidden;
+					z-index: 3;
+
+					@include media ('>=desktop') {
+						font-size: 75px;
+					}
+				}
+
+				&:after {
+					@include animate(opacity visibility);
+
+					content: '';
+					position: absolute;
+					background-color: rgba($dark-gray, .9);
+					top: 0;
+					bottom: 0;
+					right: 0;
+					left: 0;
+					z-index: 2;
+					opacity: 0;
+					visibility: hidden;
+				}
 			}
 
 			img {
@@ -531,6 +537,9 @@ section {
 	}
 
 	.video-holder {
+		padding:56.25% 0 0 0;
+		position:relative;
+
 		@include media ('>=tablet') {
 			margin-left: 70px;
 			min-width: 360px;
@@ -540,6 +549,15 @@ section {
 		@include media ('>=desktop') {
 			min-width: 560px;
 			margin-left: 140px;
+		}
+
+		iframe {
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			border: 0;
 		}
 	}
 }
@@ -576,6 +594,11 @@ section {
 
 	a {
 		font-weight: 400;
+		color: $white;
+
+		&:hover {
+			color: darken($light-blue, 25%);
+		}
 	}
 }
 
@@ -622,6 +645,14 @@ section {
 			&:last-child {
 				padding-bottom: 0;
 			}
+
+			p {
+				margin-bottom: 20px;
+
+				@include media ('>=desktop') {
+					margin-bottom: 32px;
+				}
+			}
 		}
 	}
 
@@ -630,10 +661,10 @@ section {
 
 		display: flex;
 		flex-wrap: wrap;
-		margin-top: 15px;
+		margin-top: 35px;
 
 		@include media ('>=desktop') {
-			margin-top: 20px;
+			margin-top: 50px;
 		}
 
 		li {
@@ -669,12 +700,6 @@ section {
 				}
 			}
 		}
-
-		// .icon-coffee {
-		// 	a & {
-		// 		padding: 14px;
-		// 	}
-		// }
 	}
 }
 
@@ -840,11 +865,19 @@ section {
 
 	address {
 		font-style: normal;
+
+		a {
+			color: $white;
+
+			&:hover {
+				color: $light-blue;
+			}
+		}
 	}
 
 	.btn {
 		@include media ('>=tablet') {
-			padding: 21px 10px;
+			min-width: 370px;
 		}
 	}
 }

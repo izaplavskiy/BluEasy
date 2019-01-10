@@ -4,6 +4,11 @@
 	font-weight: 600;
 	font-size: 12px;
 	padding: 25px 0;
+	text-align: center;
+	
+	@include media ('>=tablet') {
+		text-align: left;
+	}
 
 	@include media ('>=desktop') {
 		padding: 75px 0;
@@ -20,9 +25,12 @@
 	.nav {
 		display: flex;
 		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
 
 		@include media ('>=tablet') {
-			width: calc(100% - 50px);
+			flex-direction: row;
+			width: 60%;
 			justify-content: flex-start;
 		}
 
@@ -41,14 +49,16 @@
 			}
 
 			&:before {
-				content: '';
-				position: absolute;
-				height: 12px;
-				width: 1px;
-				top: 50%;
-				right: -8px;
-				transform: translateY(-50%);
-				background-color: $gray;
+				@include media ('>=tablet') {
+					content: '';
+					position: absolute;
+					height: 12px;
+					width: 1px;
+					top: 50%;
+					right: -8px;
+					transform: translateY(-50%);
+					background-color: $gray;
+				}
 
 				@include media ('>=desktop') {
 					right: -15px;
@@ -63,6 +73,13 @@
 			&:hover {
 				color: $light-blue;
 			}
+		}
+	}
+
+	.copy {
+		@include media ('>=tablet') {
+			width: 50%;
+			text-align: right;
 		}
 	}
 }
