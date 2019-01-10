@@ -1,0 +1,6 @@
+@import '../base/mixins';
+
+@include font-face(Segoe, SegoeUI-Light, 300, normal);
+@include font-face(Segoe, SegoeUI, 400, normal);
+@include font-face(Segoe, SegoeUI-SemiBold, 600, normal);
+@include font-face(Segoe, SegoeUI-Bold, 700, normal);
